@@ -1,0 +1,16 @@
+.navbar{
+    grid-area: navbar;
+    background-color: red;
+}
+  
+.navbar ul{
+    list-style-type: none;
+}
+
+.item{
+    color: white;
+}
+
+.item.active{
+    background-color: rgb(128, 35, 35);
+}
