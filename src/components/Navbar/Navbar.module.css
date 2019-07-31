@@ -7,10 +7,12 @@
     list-style-type: none;
 }
 
-.item{
+.item a{
+    width: 100%;
     color: white;
+    text-decoration: none;
 }
 
-.item.active{
-    background-color: rgb(128, 35, 35);
+.item a.active{
+    color: gold;
 }
