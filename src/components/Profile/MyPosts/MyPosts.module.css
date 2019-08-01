@@ -2,3 +2,15 @@
     grid-area: content;
     background-color: blue;
 }
+
+.postsBlock{
+    padding: 10px;
+}
+
+.text{
+     color: white;
+}
+
+.posts{
+    margin-top: 10px;
+}
