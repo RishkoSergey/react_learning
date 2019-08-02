@@ -12,3 +12,8 @@
     height: 80px;
     border-radius: 40px;
 }
+
+.likes{
+    position: relative;
+    left: 15px;
+}
