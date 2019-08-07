@@ -2,7 +2,6 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = () => {
-    console.log(style.content);
     return (
         <div>
             <div>

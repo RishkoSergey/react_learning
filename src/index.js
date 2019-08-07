@@ -1,8 +1,21 @@
-import './index.css';
 import * as serviceWorker from './serviceWorker';
-import state from './redux/state';
-import {rerenderEntireTree} from './render';
+import state, { subscribe } from './redux/state';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { addPost } from './redux/state';
+import { BrowserRouter} from 'react-router-dom';
 
-rerenderEntireTree(state);
+let rerenderEntireTree = () => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state={state} addPost={addPost} />
+        </BrowserRouter>, document.getElementById('root'));
+    }
+
+rerenderEntireTree();
+
+subscribe(rerenderEntireTree);
+    
 
 serviceWorker.unregister();

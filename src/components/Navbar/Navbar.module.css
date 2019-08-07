@@ -7,6 +7,9 @@
     list-style-type: none;
 }
 
+.item{
+    padding: 5px;
+}
 .item a{
     width: 100%;
     color: white;
