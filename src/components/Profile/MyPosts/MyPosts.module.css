@@ -1,16 +1,28 @@
 .content{
     grid-area: content;
-    background-color: blue;
+    margin-top: 15px;
 }
 
+.newPost{
+    background-color: white;
+    border-radius: 5px;
+    height: 90px; 
+}
 .postsBlock{
     padding: 10px;
 }
 
 .text{
-     color: white;
-}
+    color: black;
+    padding: 15px;
+    width: 150px;
 
+}
+.button{
+    float: right;
+    margin-right: 20px;
+    margin-top: -10px;
+}
 .posts{
     margin-top: 10px;
 }

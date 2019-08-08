@@ -1,6 +1,6 @@
 .navbar{
-    grid-area: navbar;
-    background-color: red;
+    margin-top: 25px;
+    background-color: rgb(237,238,240); 
 }
   
 .navbar ul{
@@ -9,13 +9,17 @@
 
 .item{
     padding: 5px;
+    margin-left: -40px;
+    border-radius: 5px;
 }
 .item a{
     width: 100%;
-    color: white;
+    color: rgb(85,119,144);
     text-decoration: none;
+    font-size: 16px;
 }
 
-.item a.active{
-    color: gold;
+.item:hover{
+    background-color: rgb(225,229,235);
 }
+

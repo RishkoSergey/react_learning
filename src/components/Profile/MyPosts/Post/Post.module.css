@@ -1,6 +1,8 @@
 .item{
-    color: white;
-    margin-top: 10px;
+    color: black;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .message{
@@ -11,9 +13,11 @@
     width: 80px;
     height: 80px;
     border-radius: 40px;
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
 .likes{
     position: relative;
-    left: 15px;
+    left: 25px;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import style from './Post.module.css'
 
-const Post = (props) => {
+const Post = props => {
+    debugger;
     return (
         <div className={style.item}>
-            <img src='https://cs7.pikabu.ru/post_img/big/2018/07/29/8/1532867114198722.jpg' align='middle'></img>
+            <img src={props.photo} align='middle'></img>
             <span className={style.message}>{props.message}</span>
             <div className={style.likes}>likes: {props.likesCount} </div>
         </div>
