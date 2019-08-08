@@ -27,18 +27,19 @@ let store = {
     },
     getState() { return this._state },
     rerenderEntireTree() { },
-    addPost(postMessage) {
-        let newPost = {
-            id: this._state.profilePage.posts.length + 1,
-            message: postMessage,
-            likesCount: 0
-        }
-        console.log(newPost.id);
-        this._state.profilePage.posts.push(newPost);
-        this.rerenderEntireTree();
-    },
     subscribe(observer) {
         this.rerenderEntireTree = observer;
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: this._state.profilePage.posts.length + 1,
+                message: action.postMessage,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this.rerenderEntireTree();
+        }
     }
 }
 
