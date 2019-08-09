@@ -1,4 +1,5 @@
 const ADD_POST='ADD-POST';
+const SEND_MESSAGE='SEND-MESSAGE';
 
 let store = {
     _state: {
@@ -42,9 +43,18 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this.rerenderEntireTree();
         }
+        else if (action.type === SEND_MESSAGE) {
+            let newMessage = {
+                id: this._state.dialogsPage.messages.length + 1,
+                message: action.message
+            }
+            this._state.dialogsPage.messages.push(newMessage);
+            this.rerenderEntireTree();
+        }
     }
 }
 
 export const addPostActionCreator = text => ({ type: ADD_POST, postMessage: text });
+export const sendMessageActionCreator = message => ({ type: SEND_MESSAGE, message: message });
 
 export default store;

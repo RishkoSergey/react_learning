@@ -1,6 +1,14 @@
+.wrapper{
+    background-color: white;
+    border-radius: 5px;
+}
+
 .dialogs{
     display: grid;
     grid-template-columns: 2fr 10fr; 
-    background-color: white;
-    border-radius: 5px;
+}
+
+.enterMessage{
+    /* margin-left: 15px; */
+    padding: 15px;
 }
