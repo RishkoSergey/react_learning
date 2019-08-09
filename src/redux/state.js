@@ -1,3 +1,5 @@
+const ADD_POST='ADD-POST';
+
 let store = {
     _state: {
         profilePage: {
@@ -31,7 +33,7 @@ let store = {
         this.rerenderEntireTree = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: this._state.profilePage.posts.length + 1,
                 message: action.postMessage,
@@ -42,5 +44,7 @@ let store = {
         }
     }
 }
+
+export const addPostActionCreator = text => ({ type: ADD_POST, postMessage: text });
 
 export default store;
