@@ -1,5 +1,5 @@
-const ADD_POST='ADD-POST';
-const SEND_MESSAGE='SEND-MESSAGE';
+import profileReducer from "./profile-reduser";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -29,32 +29,15 @@ let store = {
         }
     },
     getState() { return this._state },
-    rerenderEntireTree() { },
+    _callSubscriber() { },
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: this._state.profilePage.posts.length + 1,
-                message: action.postMessage,
-                likesCount: 0
-            }
-            this._state.profilePage.posts.push(newPost);
-            this.rerenderEntireTree();
-        }
-        else if (action.type === SEND_MESSAGE) {
-            let newMessage = {
-                id: this._state.dialogsPage.messages.length + 1,
-                message: action.message
-            }
-            this._state.dialogsPage.messages.push(newMessage);
-            this.rerenderEntireTree();
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber();
     }
 }
-
-export const addPostActionCreator = text => ({ type: ADD_POST, postMessage: text });
-export const sendMessageActionCreator = message => ({ type: SEND_MESSAGE, message: message });
 
 export default store;
