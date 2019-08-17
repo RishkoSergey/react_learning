@@ -1,15 +1,14 @@
 import React from 'react';
 import style from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 const Profile = props => {
     return (
         <div>
-            <ProfileInfo info={props.profilePage.info}/>
-            <MyPosts posts={props.profilePage.posts} photo={props.profilePage.info.photo}
-                            dispatch={props.dispatch} />
-                     
+            {/* ProfileInfo не оборачиваем контейнером (пока), поскольку туда идут только данные */}
+            <ProfileInfo info={props.store.getState().profilePage.info}/>
+            <MyPostsContainer store = {props.store} />
         </div>
     )
 }
