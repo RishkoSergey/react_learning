@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 
-const ProfileInfo = props => {
+const ProfileInfo = (props) => {
     return (
             <div className={style.descriptionBlock}>
                 <div className={style.photo}>
