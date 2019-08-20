@@ -18,9 +18,12 @@ const dialogsReducer = (state = initialState, action) => {
             id: state.messages.length + 1,
             message: action.message
         }
-        state.messages.push(newMessage);
+        let stateCopy = {...state};
+        stateCopy.messages = [...state.messages];
+        stateCopy.messages.push(newMessage);
+        return stateCopy;
     }
-    return state;
+    else return state;
 }
 
 export const sendMessageActionCreator = message => ({ type: SEND_MESSAGE, message: message });

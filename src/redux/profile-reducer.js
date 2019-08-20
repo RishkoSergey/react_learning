@@ -20,9 +20,12 @@ const profileReducer = (state = initialState, action) => {
             message: action.postMessage,
             likesCount: 0
         }
-        state.posts.push(newPost);
+        let stateCopy = {...state};
+        stateCopy.posts = [...state.posts];
+        stateCopy.posts.push(newPost);
+        return stateCopy;
     }
-    return state;
+    else return state;
 }
 
 export const addPostActionCreator = (text) => ({ type: ADD_POST, postMessage: text });
