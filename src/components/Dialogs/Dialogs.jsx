@@ -23,10 +23,8 @@ const Dialogs = props => {
                 </div>
             </div>
             <div className={style.enterMessage}>
-                <div>
-                    <textarea ref={newMessageElement} placeholder='Enter your message' 
-                              cols='105'></textarea>
-                </div>
+                <textarea ref={newMessageElement} placeholder='Enter your message'
+                    cols='105'></textarea>
                 <div><button onClick={sendMessage}>Send</button></div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-const SEND_MESSAGE='SEND-MESSAGE';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -13,17 +13,14 @@ let initialState = {
     ]
 }
 const dialogsReducer = (state = initialState, action) => {
-    if (action.type === SEND_MESSAGE) {
-        let newMessage = {
-            id: state.messages.length + 1,
-            message: action.message
-        }
-        let stateCopy = {...state};
-        stateCopy.messages = [...state.messages];
-        stateCopy.messages.push(newMessage);
-        return stateCopy;
+    switch (action.type) {
+        case SEND_MESSAGE:
+            return {
+                ...state, 
+                messages: [...state.messages, {id: state.messages.length+1, message: action.message}] 
+            };
+        default: return state;
     }
-    else return state;
 }
 
 export const sendMessageActionCreator = message => ({ type: SEND_MESSAGE, message: message });

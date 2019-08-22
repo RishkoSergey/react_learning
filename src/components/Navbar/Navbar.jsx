@@ -8,6 +8,7 @@ const Navbar = () => {
             <ul>
                 <li className={style.item}><NavLink to='/profile'>Profile</NavLink></li>
                 <li className={style.item}><NavLink to='/dialogs'>Dialogs</NavLink></li>
+                <li className={style.item}><NavLink to='/users'>Users</NavLink></li>
                 <li className={style.item}><NavLink>News</NavLink></li>
                 <li className={style.item}><NavLink>Music</NavLink></li>
                 <li className={style.item}><NavLink>Settings</NavLink></li>
