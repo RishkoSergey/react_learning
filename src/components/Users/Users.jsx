@@ -4,12 +4,24 @@ import User from './User/User';
 import * as axios from 'axios';
 import userPhoto from '../../assets/images/user.png';
 
-const Users = (props) => {
-    if (props.users.length === 0) {
+class Users extends React.Component {
+    constructor(props) {
+        super(props);
+
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items);
+            this.props.setUsers(response.data.items);
         })
     }
+    render() {
+        return (
+            this.props.users.map(u => <User name={u.name} city={'u.city'} followed={u.followed}
+                id={u.id} status={'u.status'} photo={u.photos.small != null ? u.photos.small : userPhoto}
+                follow={this.props.follow} unfollow={this.props.unfollow} />)
+        )
+    }
+}
+
+export default Users;
 
     // if (props.users.length === 0){
     //     props.setUsers([
@@ -26,15 +38,3 @@ const Users = (props) => {
     //             photo: 'https://pixanews.com/wp-content/uploads/2015/01/CahCats-pixanews-2-13.jpg'}]
     //     );
     // }
-    
-    let usersElements = props.users.map(u => <User name={u.name} city={'u.city'} followed={u.followed}
-        id={u.id} status={'u.status'} photo={u.photos.small != null ? u.photos.small : userPhoto}
-        follow={props.follow} unfollow={props.unfollow} />);
-    return (
-        <div>
-            {usersElements}
-        </div>
-    )
-}
-
-export default Users;
