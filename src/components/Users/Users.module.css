@@ -1,0 +1,11 @@
+span{
+    padding: 5px;
+    color: rgb(85,119,144);
+    cursor: pointer;
+}
+.selectedPage{
+    font-weight: bold;
+}
+.pages {
+    margin-bottom: 15px;
+}
