@@ -1,49 +1,31 @@
 import React from 'react';
 import style from './Users.module.css';
 import User from './User/User';
-import * as axios from 'axios';
 import userPhoto from '../../assets/images/user.png';
 
-class Users extends React.Component {
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
-                  &count=${this.props.pageSize}`).then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
-        })
+const Users = (props) => {
+    let pages = [];
+    for (let i = 1; i < Math.ceil(props.totalUsersCount / props.pageSize); i++) {
+        pages.push(i);
     }
-    onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}
-                  &count=${this.props.pageSize}`).then(response => {
-            this.props.setUsers(response.data.items);
-        })
-    }
-    render() {
-        let pages = [];
-        for(let i = 1; i < Math.ceil(this.props.totalUsersCount / this.props.pageSize); i++){
-            pages.push(i);
-        }
 
-        return (
-            <div>
-                <div className={style.pages}>
-                    {
-                        pages.map(p => {
-                            return <span className={this.props.currentPage === p && style.selectedPage}
-                                         onClick={() => { this.onPageChanged(p) } }>{p}</span>
-                        })
-                    }
-                </div>
+    return (
+        <div>
+            <div className={style.pages}>
                 {
-                    this.props.users.map(u => <User name={u.name} city={'u.city'} followed={u.followed}
-                        id={u.id} status={'u.status'} photo={u.photos.small != null ? u.photos.small : userPhoto}
-                        follow={this.props.follow} unfollow={this.props.unfollow} />)
+                    pages.map(p => {
+                        return <span className={props.currentPage === p && style.selectedPage}
+                                     onClick={() => { props.onPageChanged(p) }}>{p}</span>
+                    })
                 }
-                
             </div>
-        )
-    }
+            {
+                props.users.map(u => <User name={u.name} city={'u.city'} followed={u.followed}
+                    id={u.id} status={'u.status'} photo={u.photos.small != null ? u.photos.small : userPhoto}
+                    follow={props.follow} unfollow={props.unfollow} />)
+            }
+        </div>
+    )
 }
 
 export default Users;
